@@ -1,4 +1,4 @@
-module github.com/cuongnb14/gin-cache
+module github.com/cuongnb14/gin-cache/v2
 
 go 1.22
 
