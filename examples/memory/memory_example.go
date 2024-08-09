@@ -3,8 +3,7 @@ package main
 import (
 	"time"
 
-	"github.com/chenyahui/gin-cache"
-	"github.com/chenyahui/gin-cache/persist"
+	"github.com/cuongnb14/gin-cache/persist"
 	"github.com/gin-gonic/gin"
 )
 

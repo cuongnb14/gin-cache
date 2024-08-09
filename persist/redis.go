@@ -7,6 +7,8 @@ import (
 	"time"
 )
 
+const keyPrefix string = "cached_requests:"
+
 // RedisStore store http response in redis
 type RedisStore struct {
 	RedisClient *redis.Client
@@ -21,6 +23,7 @@ func NewRedisStore(redisClient *redis.Client) *RedisStore {
 
 // Set put key value pair to redis, and expire after expireDuration
 func (store *RedisStore) Set(key string, value interface{}, expire time.Duration) error {
+	key = keyPrefix + key
 	payload, err := Serialize(value)
 	if err != nil {
 		return err
@@ -32,12 +35,14 @@ func (store *RedisStore) Set(key string, value interface{}, expire time.Duration
 
 // Delete remove key in redis, do nothing if key doesn't exist
 func (store *RedisStore) Delete(key string) error {
+	key = keyPrefix + key
 	ctx := context.TODO()
 	return store.RedisClient.Del(ctx, key).Err()
 }
 
 // Get retrieves an item from redis, if key doesn't exist, return ErrCacheMiss
 func (store *RedisStore) Get(key string, value interface{}) error {
+	key = keyPrefix + key
 	ctx := context.TODO()
 	payload, err := store.RedisClient.Get(ctx, key).Bytes()
 

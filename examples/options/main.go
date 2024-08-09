@@ -5,8 +5,8 @@ import (
 	"sync/atomic"
 	"time"
 
-	cache "github.com/chenyahui/gin-cache"
-	"github.com/chenyahui/gin-cache/persist"
+	cache "github.com/cuongnb14/gin-cache"
+	"github.com/cuongnb14/gin-cache/persist"
 	"github.com/gin-gonic/gin"
 )
 
